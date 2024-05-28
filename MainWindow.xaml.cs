@@ -27,9 +27,12 @@ namespace ReceiptPrinterEmulator
         {
             App.Printer!.OnActivityEvent += (o, args) =>
             {
-                RefreshUI();
-                WindowsUtils.FlashWindow(this);
-                WindowsUtils.ExclaimSoft();
+                Dispatcher.Invoke(() =>
+                {
+                    RefreshUI();
+                    WindowsUtils.FlashWindow(this);
+                    WindowsUtils.ExclaimSoft();
+                });
             }; 
             
             RefreshUI();
